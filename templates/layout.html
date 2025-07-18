@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{% block title %} Vehicle Parking {% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #e6e4e4;
+    }
+
+    .navbar {
+      background-color: #1e3a8a !important;
+      color: #ffffff !important;
+    }
+
+    .navbar .nav-link {
+      color: #ffffff !important;
+      border-color: #ffffff !important;
+    }
+
+    .navbar .navbar-brand {
+      color: #ffffff !important;
+    }
+
+    .nav-link:hover {
+      border: 1px solid white !important;
+    }
+
+    .heading {
+      margin-top: 60px;
+      margin-bottom: 40px;
+      height: 50px;
+      border: 2px solid black;
+      justify-content: center;
+      align-items: center;
+      color: #082576;
+      background-color: #ffffff;
+    }
+
+    .chfont {
+      font-family: cursive;
+    }
+
+
+    /* for login and register page */
+    .col-6 {
+      display: flex;
+      flex-direction: column;
+      background-color: white;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* for title */
+
+    .col-5 {
+      width: 100%;
+      height: 90%;
+      background-color: white;
+    }
+
+    .title {
+      width: 100%;
+      height: 50px;
+    }
+  </style>
+
+  <!-- style block -->
+  {% block style %} {% endblock %}
+</head>
+
+<body>
+
+  <!-- including navbar -->
+  {% include 'navbar.html' %}
+
+  <!-- flash messages -->
+  {% include 'flashmsg.html' %}
+
+  <!-- main body -->
+  {% block body %} {% endblock %}
+
+  <!-- container for main content -->
+  <div class="container">{% block content %} {% endblock %}</div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+{% block title %} Delete lot {% endblock %}
+{% block
+style %}
+<style>
+
+    .title {
+        background-color: rgb(92, 85, 85);
+        color: white;
+    }
+
+    .fixed-width-input {
+        width: 60%
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid" style="height: 90vh;">
+  <div class="col-5 shadow mt-3">
+    <div class="title d-flex justify-content-center align-items-center mb-5 ">
+      <h3 class="text-center">Book a Parking Lot</h3>
+    </div>
+    <br>
+
+    <!-- creating forms -->
+    <form action="" method="post" class="form">
+      <div class="d-flex align-items-center justify-content-center mb-3">
+        <label for="name" class="form-label me-5 ms-5">Lot Name:</label>
+        <input class="form-control fixed-width-input" type="text" id="name" name="name" value="{{ parkinglot.name }}"
+          required />
+      </div>
+      <div class="d-flex align-items-center justify-content-center mb-3">
+        <label for="Address" class="form-label me-5 ms-5">Address:</label>
+        <input class="form-control fixed-width-input" type="text" id="address" name="address"
+          value="{{ parkinglot.address }}" required />
+      </div>
+      <div class="d-flex align-items-center justify-content-center mb-3">
+        <label for="Pincode" class="form-label me-5 ms-5">Pincode:</label>
+        <input class="form-control fixed-width-input" type="text" id="pincode" name="pincode"
+          value="{{ parkinglot.pincode }}" required />
+      </div>
+      <div class="d-flex align-items-center justify-content-center mb-3">
+        <label for="Price" class="form-label me-5 ms-5">Price per hour:</label>
+        <input class="form-control fixed-width-input" type="text" id="price" name="price"
+          value="{{ parkinglot.price_per_hour }}" required />
+      </div>
+
+      <div class="d-flex align-items-center justify-content-center mb-3">
+        <label for="totalspots" class="form-label me-5 ms-5">Total Spots:</label>
+        <input class="form-control fixed-width-input" type="text" id="totalspots" name="totalspots"
+          value="{{ parkinglot.total_spots }}" required />
+      </div>
+
+      <div class="form-group d-grid gap-2 col-4 mx-auto">
+        <p>Are you sure you want to delete this lot?</p>
+        <button type="submit" class="btn btn-danger">
+          <i class="fa fa-trash" aria-hidden="true"></i>
+          Delete
+        </button>
+        <a href="{{url_for('admin')}}" class="btn btn-warning">Cancel </a>
+      </div>
+    </form>
+  </div>
+</div>
+
+    {% endblock %}

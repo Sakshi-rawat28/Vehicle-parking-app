@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% block style %}
+<style>
+    .title {
+        background-color: rgb(92, 85, 85);
+        color: white;
+    }
+
+    .fixed-width-input {
+        width: 60%
+    }
+</style>
+
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid" style="height: 90vh;">
+    <div class="col-5 shadow mt-5">
+        <div class="title d-flex justify-content-center align-items-center mb-5 ">
+            <h3 class="text-center">Book a Parking Lot</h3>
+        </div>
+        <br>
+        <form action="" method="post" class="form">
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                <label class="me-5 ms-5">User ID :</label>
+                <input type="text" class="form-control fixed-width-input" value="{{ session['user_id']}}" readonly>
+            </div>
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                <label class="me-5 ms-5">Lot ID :</label>
+                <input type="text" class="form-control fixed-width-input" value="{{ parkinglot.id }}" readonly>
+            </div>
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                <label class="me-5 ms-5">Spot ID :</label>
+                <input type="text" class="form-control fixed-width-input" value="to be continued" readonly>
+            </div>
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                <label class="me-5 ms-5" for="specificSizeSelect">Vehicle number :</label>
+                <select class="form-select fixed-width-input" id="specificSizeSelect">
+                    <option selected>Choose...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+
+            <div class="form-group d-grid gap-2 col-4 mx-auto">
+                <button type="submit" class="btn btn-danger">
+                    Reserve
+                </button>
+                <a href="{{url_for('user')}}" class="btn btn-warning chfont mt-3">Cancel</a>
+            </div>
+    </div>
+
+    {% endblock %}

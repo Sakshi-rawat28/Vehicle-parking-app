@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary d-flex" >
+
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {% if 'user_id' in session %}
+        <h4 class="navbar navbar-brand me-5">Welcome, {{session['username']}} !</h4>
+        {% if session['is_admin'] %}
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
+            <li class="nav-item">
+              <a class="nav-link " href="{{ url_for('index')}}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{url_for('userdata')}}">User details</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Search</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Summary</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ url_for('logout')}}">Logout</a>
+            </li>
+          </ul>
+            
+        {% else %}
+          <!-- User Dashboard -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ url_for('user')}}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{url_for('parking_history')}}">Parking history</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Vehicle</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Summary</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="{{ url_for('logout')}}">Logout</a> 
+            </li>
+          </ul>
+
+        {% endif %}
+          
+        <div class="d-flex justify-content-end align-items-center">
+          <a class="nav-link active" href="{{ url_for('profile')}}">Profile</a>
+        </div>
+
+      {% else %}
+    
+      <ul class="nav justify-content-center">
+        <h4 class="navbar-brand">Vehicle parking </h4>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ url_for('login')}}">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="{{ url_for('register')}}">Register</a>
+        </li>
+      </ul>
+      
+      {% endif %}
+
+      
+      
+    </div>
+  </div>
+</nav>
+

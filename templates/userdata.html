@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+<!-- {% block title %}
+    User details
+{% endblock %} -->
+{% block style %}
+{% endblock %}
+
+{% block content %}
+    <div class="heading d-flex chfont">
+        <h3>User Details</h3>
+    </div>
+
+<!-- table for user details -->
+<table class="table table-bordered border-primary">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>Username</th>
+            <th>Location</th>
+            <th>Pincode</th>
+        </tr>
+        <tbody>
+            {% for user in users %}
+            {% if not user.is_admin %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.username }}</td>
+                <td>{{ user.address }}</td>
+                <td>{{ user.pincode }}</td>
+            </tr>
+            {% endif %}
+            {% endfor %}
+        </tbody>
+    
+    </thead>
+</table>
+    
+{% endblock %}
+

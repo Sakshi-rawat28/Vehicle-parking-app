@@ -1,0 +1,36 @@
+{% extends 'layout.html' %}
+
+{% block style %}
+    <style>
+        .info-line {
+            margin: 5px 0;
+            font-family: Arial, sans-serif;
+        }
+        .label {
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid d-flex justify-content-center align-items-center" style="height: 90vh;">
+        <div class="col-6 shadow-lg">
+            <h2>User Profile</h2>
+
+            {% for key, value in user.items() %}
+                <div class="info-line">
+                    <span class="label">{{ key }}:</span> {{ value }}
+                </div>
+            {% endfor %}
+            <div class=" d-grid gap-2 col-4 mx-auto">
+                <a href="{{url_for('edit_profile')}}" class="chfont btn btn-info mt-4" style="border:2px solid black">
+
+                    Edit Profile
+                 </a>
+            </div>
+
+
+</body>
+</html> 
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <div class="heading d-flex chfont">
+        <h3>Your parking History details</h3>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Lot ID</th>
+                <th>Spot no.</th>
+                <th>Location</th>
+                <th>Vehicle number</th>
+                <th>Timestamp</th>
+                <th>Action</th>
+            </tr>
+        <tbody>
+            
+            {% for parkinglot in parkinglots %}
+            <tr>
+                <td>{{parkinglot.id}}</td>
+                <td>to be continued</td>
+                <td>{{parkinglot.address}}</td>
+                <td>to be continued</td>
+                <td>to be continued</td> 
+                <td>
+                    <a href="{{url_for('release')}}" class="btn btn-danger">
+                        Release
+                    </a> 
+
+                </td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+
+        </thead>
+    </table>
+
+    
+{% endblock %}
