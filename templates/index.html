@@ -4,7 +4,37 @@
 {% endblock %}
 
 {% block content %} 
-    <h1>hello</h1>zzz
+    <!-- templates/index.html -->
+
+
+<div class="container mt-5 text-center">
+    <h1>Welcome to Smart Vehicle Parking</h1>
+    <p class="lead">Book your parking spot in seconds, skip the hassle!</p>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <h4>Live Availability</h4>
+            <p>Check real-time availability before you go anywhere.</p>
+        </div>
+        <div class="col-md-4">
+            <h4>Admin Dashboard</h4>
+            <p>Admins can manage lots, users, and monitor spot usage.</p>
+        </div>
+        <div class="col-md-4">
+            <h4>User Friendly</h4>
+            <p>Simple and responsive interface for fast bookings.</p>
+        </div>
+    </div>
+
+    <a href="/login" class="btn btn-success mt-4">Get Started</a>
+</div>
+
+<footer class="bg-dark text-white text-center p-3 mt-5">
+    &copy; 2025 SmartParking App | All rights reserved
+</footer>
+
+
+
     <!-- {%if 'user_id' in session %}
         <h1>Welcome to the user Dashboard</h1>
         <p>Hello {{ session['name'] }}</p>
@@ -12,7 +42,6 @@
         <h1>Welcome to the Vehicle Parking App</h1>
         <p>Please log in or register to continue.</p>
     {% endif %} -->
-
 
     
 {% endblock %}

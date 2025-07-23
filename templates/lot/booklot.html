@@ -13,6 +13,10 @@
 
 {% endblock %}
 
+{% block navbar %}
+    
+{% endblock %}
+
 
 {% block content %}
 <div class="container-fluid" style="height: 90vh;">
@@ -28,19 +32,19 @@
             </div>
             <div class="d-flex align-items-center justify-content-center mb-3">
                 <label class="me-5 ms-5">Lot ID :</label>
-                <input type="text" class="form-control fixed-width-input" value="{{ parkinglot.id }}" readonly>
+                <input type="text" class="form-control fixed-width-input" name="lot_id" value="{{ parkinglot.id }}" readonly>
             </div>
             <div class="d-flex align-items-center justify-content-center mb-3">
                 <label class="me-5 ms-5">Spot ID :</label>
-                <input type="text" class="form-control fixed-width-input" value="to be continued" readonly>
+                <input type="text" class="form-control fixed-width-input" name="spotid" value="{{spot}}" readonly>
             </div>
             <div class="d-flex align-items-center justify-content-center mb-3">
-                <label class="me-5 ms-5" for="specificSizeSelect">Vehicle number :</label>
-                <select class="form-select fixed-width-input" id="specificSizeSelect">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <label class="me-5 ms-5" for="specificSizeSelect" >Vehicle number :</label>
+                <select class="form-select fixed-width-input" name="vehicleid" id="specificSizeSelect" required>
+                    <option value="" disabled selected >Choose...</option>
+                    {% for vehicle in vehicles %}
+                    <option value="{{ vehicle.id }}">{{ vehicle.vehicle_number }}</option>
+                    {% endfor %}
                 </select>
             </div>
 
@@ -51,5 +55,6 @@
                 <a href="{{url_for('user')}}" class="btn btn-warning chfont mt-3">Cancel</a>
             </div>
     </div>
+</div>
 
-    {% endblock %}
+{% endblock %}

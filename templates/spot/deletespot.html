@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block style %}
+<style>
+    .title {
+        background-color: rgb(92, 85, 85);
+        color: white;
+    }
+
+    .fixed-width-input {
+        width: 60%
+    }
+
+
+</style>
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid" style="height: 90vh;">
+    <div class="col-5 shadow mt-5">
+        <div class="title d-flex justify-content-center align-items-center mb-5 ">
+            <h3 class="text-center">View / Delete a Parking spot</h3>
+        </div>
+        <br>
+        <form action="" method="post" class="form">
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                <label class="me-5 ms-5">Spot ID :</label>
+                <input type="text" class="form-control fixed-width-input" value="{{spot.id}}" readonly>
+            </div>
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                <label class="me-5 ms-5">Status :</label>
+                <input type="text" class="form-control fixed-width-input" value="{{spot.is_occupied}}" readonly>
+            </div>
+
+            {% if spot.is_occupied %}
+            <div class="form-group  d-grid gap-2 col-4 mx-auto mt-5">
+                <a href="{{url_for('view_reserve',id=spot.id)}}" class="btn btn-success">
+                    View reserved spot details
+                </a>
+                    
+                
+            </div>
+            {% endif %}
+
+
+            <div class=" form-group  d-flex justify-content-center mt-3">
+                <button type="submit" class="btn btn-danger newbtn me-5 mt-5">
+                    <i class="fa fa-trash" aria-hidden="true"> </i>
+                    Delete
+                </button>
+                <a href="{{url_for('admin')}}" class="btn newbtn btn-warning ms-5 mt-5 ">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+{% endblock %}

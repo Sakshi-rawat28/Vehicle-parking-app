@@ -14,12 +14,16 @@
 
 {% endblock %}
 
+{% block navbar %}
+  
+{% endblock %}
+
 {% block content %}
 
 <div class="container-fluid" style="height: 90vh;">
   <div class="col-5 shadow mt-5">
     <div class="title d-flex justify-content-center align-items-center mb-5 ">
-      <h3 class="text-center">Book a Parking Lot</h3>
+      <h3 class="text-center">Edit Parking Lot</h3>
     </div>
     <br>
 
@@ -40,12 +44,12 @@
       </div>
       <div class="d-flex align-items-center justify-content-center mb-3">
         <label for="Price" class="form-label me-5 ms-5">Price per hour:</label>
-        <input class="form-control fixed-width-input" type="text" id="price" name="price" value="{{ parkinglot.price_per_hour }}" required />
+        <input class="form-control fixed-width-input" type="float" id="price" name="price" value="{{ parkinglot.price_per_hour }}" required />
       </div>
 
       <div class="d-flex align-items-center justify-content-center mb-3">
         <label for="totalspots" class="form-label me-5 ms-5">Total Spots:</label>
-        <input class="form-control fixed-width-input" type="text" id="totalspots" name="totalspots" value="{{ parkinglot.total_spots }}" required />
+        <input class="form-control fixed-width-input" type="integer" id="totalspots" name="totalspots" value="{{ parkinglot.total_spots }}" required />
       </div>
 
       <div class="form-group d-grid gap-2 col-4 mx-auto">
@@ -56,5 +60,6 @@
         <a href="{{url_for('admin')}}" class="btn btn-warning chfont mt-3">Cancel</a>
       </div>
   </div>
+</div>
 
   {% endblock %}

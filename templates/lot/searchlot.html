@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block style %}
+<style>
+    .fixed-width-input {
+        width: 500px;
+    }
+
+    p {
+        font-size: large;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+    <form class="form-group d-flex mt-5 justify-content-center" role="search">
+        <p class="mt-3 chfont">Search parking lot (location / pincode) :</p>
+        <input class="form-control fixed-width-input ms-4" type="search" placeholder="Search here"
+            aria-label="Search" />
+        <button class="btn btn-success ms-3" type="submit">Search</button>
+    </form>
+
+    <div class="heading d-flex chfont ">
+        <h3>Parking Lot List</h3>
+    </div>
+</div>
+{% endblock %}

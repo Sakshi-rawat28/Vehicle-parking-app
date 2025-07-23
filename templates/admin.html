@@ -1,64 +1,75 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    Admin Dashboard
+Admin Dashboard
+{% endblock %}
+
+{% block style %}
+<style>
+    .contain {
+        display: inline-block;
+        /* Let the box grow in width & height */
+        padding: 20px;
+        background-color: white;
+        border: 2px solid #0d6efd;
+        border-radius: 15%;
+    }
+
+    .chfont{
+        font-family: cursive;
+    }
+
+    a{
+        text-decoration: none;
+    }
+
+</style>
+
+
 {% endblock %}
 {% block content %}
-    <div class="heading d-flex chfont ">
-        <h3>Parking Lot Details</h3>
+<div class="heading d-flex ">
+    <h3>Parking Lot Details</h3>
+</div>
+
+<div class="container-fluid row mb-3">
+    {% for parkinglot in parkinglots %}
+    <div class="contain col-3 me-3 mb-3" style="width: 300px; overflow-y: auto; ">
+        <h4 class="text-center ">{{parkinglot.name}}</h4>
+        <div class="lot-controls text-center ">
+            <a href="{{ url_for('edit_lot', id=parkinglot.id) }}">Edit</a> |
+            <a href="{{ url_for('delete_lot', id=parkinglot.id) }}">Delete</a>
+        </div>
+
+        <div class="occupied-info text-center">(Occupied: {{ parkinglot.spots | selectattr('is_occupied') | list | length }} / {{parkinglot.total_spots }})</div>
+        <hr>
+        <div class="container ">
+            <div class="row">
+                {% for spot in parkinglot.spots %}
+                <div class="col-2 mb-2 d-flex justify-content-center">
+                    <div class="smallcontain">
+                        {% if spot.is_occupied %}
+                        <a  href="{{ url_for('delete_spot' , id=spot.id)}}" class="btn btn-danger">O</a>
+                        {% else %}
+                        <a href="{{ url_for('delete_spot' , id=spot.id)}}"  class="btn btn-success">A</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 
-<!-- table for parking lot details -->
-<table class="table">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Location</th>
-            <th>Pincode</th>
-            <th>Price</th>
-            <th>Total Spots</th>
-            <th>Actions</th>
-        </tr>
-        <tbody>
-            {% for parkinglot in parkinglots %}
-            <tr>
-                <td>{{parkinglot.id}}</td>
-                <td>{{parkinglot.name}}</td>
-                <td>{{parkinglot.address}}</td>
-                <td>{{parkinglot.pincode}}</td>
-                <td>{{parkinglot.price_per_hour}}</td>
-                <td>{{parkinglot.total_spots}}</td>
-                <td>
-                    <a href="{{url_for('view_lot' , id=parkinglot.id)}}" class="btn btn-success">
-                        <i class="fa fa-search" aria-hidden="true"></i>
-                        View
-                    </a>
-                    <a href="{{url_for('edit_lot' , id=parkinglot.id)}}" class="btn btn-warning">
-                        <i class="fa fa-edit" aria-hidden="true"></i>
-                        Edit
-                    </a>
-                    <a href="{{url_for('delete_lot' , id=parkinglot.id)}}" class="btn btn-danger">
-                        <i class="fa fa-trash" aria-hidden="true"></i>
-                        Delete
-                    </a> 
-                </td>
-            </tr>
+    {% endfor %}
 
-            {% endfor %}
-        </tbody>
-    
-    </thead>
-</table>
+</div>
 
-<div class=" d-grid gap-2 col-2 mx-auto">
+<div class=" d-grid gap-2 col-2 mx-auto mb-5">
     <a href="{{url_for('add_lot')}}" class="chfont btn btn-info mt-4" style="border:2px solid black">
         <i class="fa fa-plus" aria-hidden="true"></i>
         Add Lots
     </a>
 </div>
-    
+
+
 {% endblock %}
-
-
-

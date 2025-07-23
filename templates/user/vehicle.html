@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% block style %}
+
+<style>
+    .mt-5 {
+        justify-content: space-between;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class=" d-flex mt-5 flex-direction-row align-items-center">
+        <h3>Vehicle:</h3>
+        <a href="{{url_for('add_vehicle')}}" class="chfont btn btn-success" style="border:2px solid black">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Add Vehicle
+        </a>
+    </div>
+
+    <table class="table mt-3">
+        <thead>
+            <tr>
+                <th>Vehicle Number</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        <tbody>
+            {% for vehicle in vehicles %}
+            <tr>
+                <td>{{vehicle.vehicle_number}}</td>
+                <td>Not defined</td>
+                <td>
+                    <a href="#" class="btn btn-warning">
+                        <i class="fa fa-edit" aria-hidden="true"></i>
+                        Edit
+                    </a>
+                    <a href="#" class="btn
+                        btn-danger">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                        Delete
+                    </a>
+                </td>
+            </tr>
+
+            {% endfor %}
+        </tbody>
+
+        </thead>
+    </table>
+
+</div>
+
+{% endblock %}

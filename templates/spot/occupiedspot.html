@@ -1,5 +1,8 @@
 {% extends 'layout.html' %}
 
+{% block navbar %}
+{% endblock %}
+
 {% block style %}
     <style>
         .info-line {
@@ -32,26 +35,27 @@
     <div class="container-fluid d-flex justify-content-center align-items-center" style="height: 90vh;">
         <div class="col-6 shadow-lg">
             <div class="chfont ">
-                <h2>YOUR PROFILE DETAILS</h2>
+                <h2>OCCUPIED SPOT DETAILS</h2>
             </div>
             <div class="info-line mt-5">
                 <div class="data">
-                    <span class="label">Name:</span> {{ user.name }}
+                    <span class="label">User ID :</span> {{ reservation.user_id }}
                     <br>
-                    <span class="label">Username:</span> {{ user.username }}
+                    <span class="label">Username:</span> {{ reservation.user.username }}
                     <br>
-                    <span class="label">Address:</span> {{ user.address }}
+                    <span class="label">Vehicle number :</span> {{ reservation.vehicle.vehicle_number }}
                     <br>
-                    <span class="label">Pincode:</span> {{ user.pincode }}
+                    <span class="label">Date/time of parking :</span> {{ reservation.parking_timestamp }}
                     <br>
+                    <span class="label">Estimated total cost :</span> {{ est_cost }}
+
                 </div>
                
             </div>
             
             <div class=" d-grid gap-2 col-4 mx-auto">
-                <a href="{{url_for('edit_profile')}}" class="btn btn-info mt-4" style="border:2px solid black">
-
-                    Edit Profile
+                <a href="{{url_for('admin')}}" class="btn btn-warning mt-4" style="border:2px solid black">
+                    Close
                  </a>
             </div>
 </body>

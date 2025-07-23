@@ -10,20 +10,21 @@
                 <th>Spot no.</th>
                 <th>Location</th>
                 <th>Vehicle number</th>
-                <th>Timestamp</th>
+                <th>Parking Timestamp</th>
                 <th>Action</th>
             </tr>
         <tbody>
             
-            {% for parkinglot in parkinglots %}
+            {% for reservation in reservations %}
             <tr>
-                <td>{{parkinglot.id}}</td>
-                <td>to be continued</td>
-                <td>{{parkinglot.address}}</td>
-                <td>to be continued</td>
-                <td>to be continued</td> 
+                <td>{{reservation.lot_id}}</td>
+                <td>{{reservation.parkingspot.spot_number}}</td>
+                <td>{{reservation.parkinglot.address}}</td> 
+                <td>{{reservation.vehicle.vehicle_number}}</td>
+                <td>{{reservation.parking_timestamp}}</td>
+              
                 <td>
-                    <a href="{{url_for('release')}}" class="btn btn-danger">
+                    <a href="{{url_for('release',id=reservation.id)}}" class="btn btn-danger">
                         Release
                     </a> 
 
