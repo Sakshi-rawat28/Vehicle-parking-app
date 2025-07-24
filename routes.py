@@ -274,7 +274,27 @@ def edit_profile_post():
 @auth_required
 def user():
     parkinglots = ParkingLot.query.all()
-    return render_template('user/user.html',parkinglots=parkinglots)
+    parameter= request.args.get('parameter')
+    query= request.args.get('query')
+
+    parameters={
+        'default':'Search by',
+        'lotname':'Lot name',
+        'location' : 'Location',
+        'pincode':'Pincode'
+    }
+    
+    if parameter=='lotname':
+        parkinglots=ParkingLot.query.filter(ParkingLot.name.ilike(f'%{query}%')).all()
+        return render_template('user/user.html',parkinglots=parkinglots,parameters=parameters,param=parameter,query=query)
+    elif parameter=='location':
+        parkinglots=ParkingLot.query.filter(ParkingLot.address.ilike(f'%{query}%')).all()
+        return render_template('user/user.html',parkinglots=parkinglots,parameters=parameters,param=parameter,query=query)
+    elif parameter=='pincode':
+        parkinglots=ParkingLot.query.filter(ParkingLot.pincode.ilike(f'{query}%')).all()
+        return render_template('user/user.html',parkinglots=parkinglots,parameters=parameters,param=parameter,query=query)
+
+    return render_template('user/user.html',parkinglots=parkinglots,parameters=parameters,param=parameter,query=query)
     
 @app.route('/lot/<int:id>/book')
 @auth_required
@@ -409,7 +429,39 @@ def add_vehicle_post():
 @app.route('/search')
 @admin_required
 def search_lot():
-    return render_template('lot/searchlot.html')
+
+    parameter= request.args.get('parameter')
+    query= request.args.get('query')
+
+    parameters= {
+        'default':'Search by ',
+        'lotname' : 'Lot name',
+        'location' :'Location',
+        'pincode' : 'Pincode',
+        'lotid': 'Lot ID',
+        'totalspot': 'Total Spots'
+    }
+    
+    if parameter=='lotname':
+        parkinglots=ParkingLot.query.filter(ParkingLot.name.ilike(f'%{query}%')).all()
+        return render_template('lot/searchlot.html',parkinglots=parkinglots, parameters=parameters,param=parameter,query=query)
+    elif parameter=='location':
+        parkinglots=ParkingLot.query.filter(ParkingLot.address.ilike(f'%{query}%')).all()
+        return render_template('lot/searchlot.html',parkinglots=parkinglots , parameters=parameters,param=parameter,query=query)
+    elif parameter=='pincode':
+        parkinglots=ParkingLot.query.filter(ParkingLot.pincode.ilike(f'{query}%')).all()
+        return render_template('lot/searchlot.html',parkinglots=parkinglots ,parameters=parameters,param=parameter,query=query)
+    elif parameter=='lotid':
+        parkinglots=ParkingLot.query.filter(ParkingLot.id.ilike(f'{query}')).all()
+        return render_template('lot/searchlot.html',parkinglots=parkinglots,parameters=parameters,param=parameter,query=query)
+    elif parameter=='totalspot':
+        parkinglots=ParkingLot.query.filter(ParkingLot.total_spots.ilike(f'{query}')).all()
+        return render_template('lot/searchlot.html',parkinglots=parkinglots,parameters=parameters,param=parameter,query=query)
+        
+    parkinglots = ParkingLot.query.all()
+    return render_template('lot/searchlot.html',parkinglots=parkinglots,parameters=parameters,param=parameter,query=query)
+
+
 
 
 #-----------------------------  spot--------------------------------------

@@ -28,47 +28,16 @@ Admin Dashboard
 
 {% endblock %}
 {% block content %}
-<div class="heading d-flex ">
-    <h3>Parking Lot Details</h3>
-</div>
 
 <div class="container-fluid row mb-3">
-    {% for parkinglot in parkinglots %}
-    <div class="contain col-3 me-3 mb-3" style="width: 300px; overflow-y: auto; ">
-        <h4 class="text-center ">{{parkinglot.name}}</h4>
-        <div class="lot-controls text-center ">
-            <a href="{{ url_for('edit_lot', id=parkinglot.id) }}">Edit</a> |
-            <a href="{{ url_for('delete_lot', id=parkinglot.id) }}">Delete</a>
-        </div>
-
-        <div class="occupied-info text-center">(Occupied: {{ parkinglot.spots | selectattr('is_occupied') | list | length }} / {{parkinglot.total_spots }})</div>
-        <hr>
-        <div class="container ">
-            <div class="row">
-                {% for spot in parkinglot.spots %}
-                <div class="col-2 mb-2 d-flex justify-content-center">
-                    <div class="smallcontain">
-                        {% if spot.is_occupied %}
-                        <a  href="{{ url_for('delete_spot' , id=spot.id)}}" class="btn btn-danger">O</a>
-                        {% else %}
-                        <a href="{{ url_for('delete_spot' , id=spot.id)}}"  class="btn btn-success">A</a>
-                        {% endif %}
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-        </div>
+    {% include 'lot.html'   %}
+    
+    <div class=" d-grid gap-2 col-2 mx-auto mb-5">
+        <a href="{{url_for('add_lot')}}" class="chfont btn btn-info mt-4" style="border:2px solid black">
+            <i class="fa fa-plus" aria-hidden="true"></i>
+            Add Lots
+        </a>
     </div>
-
-    {% endfor %}
-
-</div>
-
-<div class=" d-grid gap-2 col-2 mx-auto mb-5">
-    <a href="{{url_for('add_lot')}}" class="chfont btn btn-info mt-4" style="border:2px solid black">
-        <i class="fa fa-plus" aria-hidden="true"></i>
-        Add Lots
-    </a>
 </div>
 
 

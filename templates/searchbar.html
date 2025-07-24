@@ -1,0 +1,16 @@
+<form class="form-group mt-3 " role="search" method="GET">
+    <div class="input-group">
+        <select name="parameter" id="parameter" class="parameter form-select">
+            {% for parameter in parameters %}
+            <!-- param is basically parameter which admin has selected -->
+                {% if param and parameter==param %}
+                    <option value="{{parameter}}" selected>{{parameters[parameter]}}</option>
+                {% else %}
+                    <option value="{{parameter}}">{{parameters[parameter]}}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <input type="search" value="{{query}}" name="query" class="form-control w-50" placeholder="Search here">
+        <button class="btn btn-primary" type="submit">Search</button>
+    </div>
+</form>
