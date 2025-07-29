@@ -30,13 +30,13 @@
             {% for vehicle in vehicles %}
             <tr>
                 <td>{{vehicle.vehicle_number}}</td>
-                <td>Not defined</td>
+                <td>{{vehicle.vehicle_type}}</td>
                 <td>
-                    <a href="#" class="btn btn-warning">
+                    <a href="{{url_for('edit_vehicle',id=vehicle.id)}}" class="btn btn-warning">
                         <i class="fa fa-edit" aria-hidden="true"></i>
                         Edit
                     </a>
-                    <a href="#" class="btn
+                    <a href="{{url_for('delete_vehicle',id=vehicle.id)}}" class="btn
                         btn-danger">
                         <i class="fa fa-trash" aria-hidden="true"></i>
                         Delete

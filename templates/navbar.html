@@ -17,10 +17,7 @@
               <a class="nav-link active me-3" href="{{url_for('userdata')}}">User details</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active me-3" href="{{url_for('search_lot')}}">Search</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active me-3" href="#">Summary</a>
+              <a class="nav-link active me-3" href="{{url_for('admin_summary')}}">Summary</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active me-3" href="{{ url_for('logout')}}">Logout</a>
@@ -40,7 +37,7 @@
               <a class="nav-link active me-3" href="{{url_for('vehicle')}}">Vehicle</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active me-3" href="#">Summary</a>
+              <a class="nav-link active me-3" href="{{url_for('user_summary',id=session['user_id'])}}">Summary</a>
             </li>
             <li class="nav-item">
               <a class="nav-link active me-3" href="{{ url_for('logout')}}">Logout</a> 

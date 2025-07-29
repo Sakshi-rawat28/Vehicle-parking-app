@@ -1,6 +1,6 @@
 from app import app
 from flask_sqlalchemy import SQLAlchemy
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash
 
 # Initialize the SQLAlchemy object
 db = SQLAlchemy(app)
@@ -26,8 +26,9 @@ class Vehicle(db.Model):
     vehicle_number = db.Column(db.String(25), unique=True, nullable=False)
     vehicle_type = db.Column(db.String(20))
 
+
     # Define the relationship with Reservation
-    reserved_vehicle = db.relationship('Reservation', backref='vehicle', lazy=True)
+    reserved_vehicle = db.relationship('Reservation', backref='vehicle', lazy=True,cascade="all, delete-orphan")
 
 class ParkingLot(db.Model):
     __tablename__ = 'parkinglot'
@@ -41,7 +42,7 @@ class ParkingLot(db.Model):
 
     # Define the relationship with ParkingSpot
     spots= db.relationship('ParkingSpot', backref='parkinglot', lazy=True,cascade="all, delete-orphan" )
-    lots= db.relationship('Reservation', backref='parkinglot', lazy=True)
+    lots= db.relationship('Reservation', backref='parkinglot', lazy=True,cascade="all, delete-orphan")
 
 class ParkingSpot(db.Model):
     __tablename__ = 'parkingspot'
@@ -52,7 +53,7 @@ class ParkingSpot(db.Model):
     # is_deleted= db.Column(db.Boolean , default=False)
 
     # Define the relationship with Reservation
-    reserved_spot = db.relationship('Reservation', backref='parkingspot', lazy=True )
+    reserved_spot = db.relationship('Reservation', backref='parkingspot', lazy=True ,cascade="all, delete-orphan")
 
 class Reservation(db.Model):
     id = db.Column(db.Integer, primary_key=True)

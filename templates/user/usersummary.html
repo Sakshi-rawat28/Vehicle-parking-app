@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block title %}
+User summary    
+{% endblock %}
+
+{% block content %}
+
+    <div class="container-fluid d-flex justify-content-center align-item-center mt-5 ">
+        <img src="{{ url_for('static', filename=image_file) }}" alt="Parking Summary Chart">
+    </div>
+    
+{% endblock %}

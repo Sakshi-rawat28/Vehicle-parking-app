@@ -10,7 +10,7 @@
                 {% endif %}
             {% endfor %}
         </select>
-        <input type="search" value="{{query}}" name="query" class="form-control w-50" placeholder="Search here">
-        <button class="btn btn-primary" type="submit">Search</button>
+        <input type="search" value="{{query or ''}}" name="query" class="form-control w-50" placeholder="Search here">
+        <button class="btn btn-outline-primary" type="submit">Search</button>
     </div>
 </form>

@@ -1,0 +1,64 @@
+{% extends 'layout.html' %}
+{% block title %} Edit Vehicle {% endblock %}
+{% block style %}
+<style>
+  .title {
+    background-color: rgb(92, 85, 85);
+    color: white;
+  }
+
+  .fixed-width-input {
+    width: 60%
+  }
+</style>
+
+{% endblock %}
+
+{% block navbar %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid" style="height: 90vh;">
+  <div class="col-5 shadow mt-5">
+    <div class="title d-flex justify-content-center align-items-center mb-5 ">
+      <h3 class="text-center">Edit Vehicle</h3>
+    </div>
+    <br>
+
+    <!-- creating forms -->
+    <form action="" method="post" class="form">
+      <div class="d-flex align-items-center justify-content-center mb-3">
+        <label for="name" class="form-label me-5 ms-5">Vehicle Number:</label>
+        <input class="form-control fixed-width-input" type="text" id="no" name="no" value="{{ vehicle.vehicle_number}}"
+          readonly />
+      </div>
+      <div class="d-flex align-items-center justify-content-center mb-3">
+        <label for="Address" class="form-label me-5 ms-5">Vehicle Type</label>
+        <select name="vehicle_type" class="form-select fixed-width-input " required>
+          <option value="" disabled selected>{{vehicle.vehicle_type}}</option>
+          <option value="Hatchback">Hatchback</option>
+          <option value="Sedan">Sedan</option>
+          <option value="SUV">SUV</option>
+          <option value="Jeep">Jeep</option>
+          <option value="Pickup Truck">Pickup Truck</option>
+          <option value="Truck">Truck</option>
+          <option value="Van">Van/MPV</option>
+          <option value="Luxury">Luxury Car</option>
+          <option value="Electric">Electric Car</option>
+          <option value="Mini Truck">Mini Truck</option>
+          <option value="Mini Truck">Other</option>
+        </select>
+      </div>
+
+      <div class="form-group d-grid gap-2 col-4 mx-auto">
+        <button type="submit" class="btn btn-success">
+          <i class="fas fa-edit    "></i>
+          Update
+        </button>
+        <a href="{{url_for('vehicle')}}" class="btn btn-warning chfont mt-3">Cancel</a>
+      </div>
+  </div>
+</div>
+
+{% endblock %}

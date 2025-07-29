@@ -34,14 +34,24 @@
                 <label for="name" class="form-label me-5 ms-5">Vehicle number :</label>
                 <input class="form-control fixed-width-input" type="text" id="vehicleno" name="vehicleno" required />
             </div>
-            <!-- <div>
-                <select fixed-width-input id="specificSizeSelect">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+            <div class="d-flex align-items-center justify-content-center mb-3">
+                <label for="type" class="form-label me-5 ms-5">Vehicle Type :</label>
+
+                <select name="vehicle_type" class="form-select fixed-width-input " required>
+                    <option value="" disabled selected>Select Vehicle Type</option>
+                    <option value="Hatchback">Hatchback</option>
+                    <option value="Sedan">Sedan</option>
+                    <option value="SUV">SUV</option>
+                    <option value="Jeep">Jeep</option>
+                    <option value="Pickup Truck">Pickup Truck</option>
+                    <option value="Truck">Truck</option>
+                    <option value="Van">Van/MPV</option>
+                    <option value="Luxury">Luxury Car</option>
+                    <option value="Electric">Electric Car</option>
+                    <option value="Mini Truck">Mini Truck</option>
+                    <option value="Mini Truck">Other</option>
                 </select>
-            </div> -->
+            </div>
 
             <div class="form-group d-grid gap-2 col-4 mx-auto mt-5">
                 <button type="submit" class="btn btn-danger">

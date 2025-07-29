@@ -1,4 +1,14 @@
 {% extends 'layout.html' %}
+
+{% block style %}
+<style>
+    p{
+        color: rgb(15, 173, 15);
+        font-weight: bold;
+    }
+</style>
+    
+{% endblock %}
 {% block content %}
     <div class="heading d-flex chfont">
         <h3>Your parking History details</h3>
@@ -11,6 +21,8 @@
                 <th>Location</th>
                 <th>Vehicle number</th>
                 <th>Parking Timestamp</th>
+                <th>Leaving Timestamp</th>
+                <th>Total Price</th>
                 <th>Action</th>
             </tr>
         <tbody>
@@ -22,11 +34,19 @@
                 <td>{{reservation.parkinglot.address}}</td> 
                 <td>{{reservation.vehicle.vehicle_number}}</td>
                 <td>{{reservation.parking_timestamp}}</td>
+                <td>{{reservation.leaving_timestamp}}</td>
+                <td>{{reservation.total_cost}}</td>
               
                 <td>
+                    {% if not reservation.leaving_timestamp %}
                     <a href="{{url_for('release',id=reservation.id)}}" class="btn btn-danger">
                         Release
-                    </a> 
+                    </a>                     
+                    {% else %}
+                    <p > Vacated </p>
+                        
+                    {% endif %}
+                    
 
                 </td>
             </tr>

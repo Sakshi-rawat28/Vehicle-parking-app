@@ -1,48 +1,41 @@
 {% extends 'layout.html' %}
+{% block navbar %}
+{% endblock %}
+
 {% block title %}
-    Home
+Home
 {% endblock %}
 
-{% block content %} 
-    <!-- templates/index.html -->
+{% block style %}
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url("{{ url_for('static', filename='bg.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        color: white;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
+    .container {
+        background: rgba(0, 0, 0, 0.5);
+        padding: 40px;
+        border-radius: 10px;
+        text-align: center;
+    }
+</style>
 
-<div class="container mt-5 text-center">
-    <h1>Welcome to Smart Vehicle Parking</h1>
-    <p class="lead">Book your parking spot in seconds, skip the hassle!</p>
+{% endblock %}
 
-    <div class="row mt-5">
-        <div class="col-md-4">
-            <h4>Live Availability</h4>
-            <p>Check real-time availability before you go anywhere.</p>
-        </div>
-        <div class="col-md-4">
-            <h4>Admin Dashboard</h4>
-            <p>Admins can manage lots, users, and monitor spot usage.</p>
-        </div>
-        <div class="col-md-4">
-            <h4>User Friendly</h4>
-            <p>Simple and responsive interface for fast bookings.</p>
-        </div>
-    </div>
-
-    <a href="/login" class="btn btn-success mt-4">Get Started</a>
-</div>
-
-<footer class="bg-dark text-white text-center p-3 mt-5">
-    &copy; 2025 SmartParking App | All rights reserved
-</footer>
-
-
-
-    <!-- {%if 'user_id' in session %}
-        <h1>Welcome to the user Dashboard</h1>
-        <p>Hello {{ session['name'] }}</p>
-    {% else %}
+{% block content %}
+<div class="container-fluid">
+    <div class="container">
         <h1>Welcome to the Vehicle Parking App</h1>
-        <p>Please log in or register to continue.</p>
-    {% endif %} -->
-
-    
+        <a href="{{url_for('login')}}" class="btn btn-primary btn-lg">Get Started</a>
+    </div>
+</div>
 {% endblock %}
-
