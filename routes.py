@@ -375,7 +375,11 @@ def view_reserve(id):
 @admin_required
 def delete_spot(id):
     spot=ParkingSpot.query.get(id)
-    return render_template('spot/deletespot.html',spot=spot)
+    if not spot.is_occupied: 
+        status='Available'   
+    else:
+        status='Occupied'
+    return render_template('spot/deletespot.html',spot=spot,status=status)
 
 @app.route('/admin/deletespot/<int:id>', methods=['POST'])
 @admin_required
