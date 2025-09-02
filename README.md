@@ -1,6 +1,6 @@
 # 🚗 Vehicle Parking App
 
-This is my **first real-world project**, built as part of my learning journey while pursuing a dual degree from **IIT Madras (BS in Data Science)** and **Delhi University**.  
+This is my **first real-world project**, built as part of my learning journey while pursuing a dual degree from **IIT Madras (BS in Data Science)** . 
 
 I was always passionate about creating useful web applications, and this project gave me the opportunity to apply my knowledge and gain hands-on experience in **Flask, Databases, and Web Development**.  
 
